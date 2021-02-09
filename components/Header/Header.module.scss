@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 40px;
+  height: 700px;
+  box-sizing: border-box;
+  color: $white;
+  background: linear-gradient(to bottom right, $blue-darker, $blue-lighter);
+}
+.blogContainer {
+  height: 400px;
+  background: linear-gradient(to bottom, $blue-darker, $blue-lighter);
+  & .heading {
+    width: 100%;
+    text-align: center;
+  }
+}
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  flex: 1;
+}
+.heading {
+  font-size: $font-size-xxl;
+  z-index: 1;
+  line-height: 100px;
+}
+.globe {
+  position: absolute;
+  height: 1000px;
+  width: 650px;
+  right: $gutter-desktop;
+  top: -50;
+}
+@media screen and (min-width: $breakpoint-laptop) {
+  .container {
+    padding: $gutter-desktop 180px;
+  }
+  .heading {
+    width: 50%;
+  }
+}
+@media screen and (min-width: $breakpoint-desktop) {
+  .container {
+    padding: $gutter-desktop 180px;
+  }
+  .heading {
+    font-size: 72px;
+    width: 50%;
+  }
+}

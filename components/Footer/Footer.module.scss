@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: $gutter-desktop 40px;
+  height: 300px;
+  box-sizing: border-box;
+  background-color: $blue;
+  color: $white;
+}

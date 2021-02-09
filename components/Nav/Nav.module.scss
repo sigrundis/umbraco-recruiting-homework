@@ -1,0 +1,119 @@
+@import '../../styles/variables.scss';
+
+.nav {
+  position: fixed;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: background-color 0.4s, height 0.4s;
+}
+.logoWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.scrolledNav {
+  background-color: $white;
+  .logoWrapper {
+    left: $gutter-mobile;
+    top: $gutter-mobile;
+  }
+}
+.hideLogoWrapper {
+  display: none;
+}
+.logo {
+  height: 80px;
+  width: 80px;
+  margin-right: auto;
+}
+.navMobileOpen {
+  background: $blue-darker;
+  padding-bottom: 50px;
+}
+.ul {
+  display: none;
+}
+.mobileUl {
+  text-align: center;
+  padding: 0;
+  width: 100vw;
+}
+.li {
+  position: relative;
+  list-style-type: none;
+  text-decoration: none;
+  color: $white;
+  font-size: 18px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+@media screen and (min-width: $breakpoint-laptop) {
+  .nav {
+    flex-flow: row;
+    align-items: center;
+    height: 80px;
+    padding: 0 $gutter-desktop;
+  }
+  .scrolledNav {
+    height: 50px;
+    background-color: $white;
+    & .li {
+      color: $blue;
+    }
+    .selectedLi {
+      &::after {
+        background-color: $blue;
+      }
+    }
+  }
+  .mobileUl {
+    display: none;
+  }
+  .ul {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+  .li {
+    font-size: $font-size-m;
+    white-space: nowrap;
+    margin-bottom: 0;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    &:hover {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        bottom: -6px;
+        background-color: white;
+        left: 0;
+        transition: all 0.3s;
+      }
+    }
+  }
+  .selectedLi {
+    &::after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      bottom: -6px;
+      background-color: white;
+      left: 0;
+    }
+  }
+  .icon {
+    display: none;
+  }
+}
