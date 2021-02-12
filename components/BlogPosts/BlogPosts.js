@@ -8,9 +8,10 @@ const BlogPosts = ({ blogContent }) => {
   return (
     <div className={container}>
       <div className={blogContainer}>
-        {blogContent.map((blogPost, idx) => (
-          <BlogPost key={`blogPostKey-${idx}`} blogPost={blogPost} />
-        ))}
+        {blogContent &&
+          blogContent.map((blogPost, idx) => (
+            <BlogPost key={`blogPostKey-${idx}`} blogPost={blogPost} />
+          ))}
       </div>
     </div>
   );

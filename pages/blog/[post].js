@@ -9,7 +9,6 @@ import { getDefaultContent, getBlog, getBlogPostByUrl } from '../../lib/api';
 import BlogLayout from '../../components/BlogLayout';
 
 const {
-  flexWrapper,
   info,
   label: labelStyle,
   value: valueStyle,
@@ -87,7 +86,7 @@ export async function getStaticPaths() {
   let paths = data?.blogContent;
   if (paths) {
     const { blogContent } = data;
-    paths = blogContent.map((blogPost) => {
+    paths = blogContent?.map((blogPost) => {
       let post = blogPost.url.replace('/home/blog/', '');
       if (post.charAt(post.length - 1) === '/') {
         post = post.slice(0, -1);
@@ -97,7 +96,6 @@ export async function getStaticPaths() {
         params: { post },
       };
     });
-    console.log('paths', paths);
     return {
       paths,
       fallback: false,
