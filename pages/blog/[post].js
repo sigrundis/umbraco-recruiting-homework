@@ -86,16 +86,20 @@ export async function getStaticPaths() {
   let paths = data?.blogContent;
   if (paths) {
     const { blogContent } = data;
-    paths = blogContent?.map((blogPost) => {
-      let post = blogPost.url.replace('/home/blog/', '');
-      if (post.charAt(post.length - 1) === '/') {
-        post = post.slice(0, -1);
-      }
 
-      return {
-        params: { post },
-      };
-    });
+    paths = blogContent
+      ? blogContent.map((blogPost) => {
+          let post = blogPost.url.replace('/home/blog/', '');
+          if (post.charAt(post.length - 1) === '/') {
+            post = post.slice(0, -1);
+          }
+
+          return {
+            params: { post },
+          };
+        })
+      : [];
+
     return {
       paths,
       fallback: false,
