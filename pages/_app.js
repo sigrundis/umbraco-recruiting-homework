@@ -6,11 +6,6 @@ import { isBrowser } from '../lib/helpers';
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     loadFont();
-
-    if (isBrowser) {
-      // For screen readers, to increase accessability.
-      document.documentElement.lang = 'en';
-    }
   }, []);
 
   return <Component {...pageProps} />;
