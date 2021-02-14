@@ -7,7 +7,7 @@
   overflow: hidden;
   padding: 40px;
   width: 100vw;
-  height: 800px;
+  height: 700px;
   box-sizing: border-box;
   color: $white;
   background: linear-gradient(to bottom right, $blue-darker, $blue-lighter);
@@ -57,6 +57,9 @@
   .container {
     padding: $gutter-desktop 180px;
     height: 800px;
+  }
+  .blogContainer {
+    height: 400px;
   }
   .globe {
     right: 80px;
