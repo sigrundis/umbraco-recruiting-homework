@@ -10,10 +10,10 @@ _You will be creating the frontend for the blog. The backend will be running Umb
 
 - _Make a frontend application powered by content from an Umbraco Heartcore site_
 - _Host the source code on a Github repository. Make sure to have a readme.md file which instructs other people how to run the application locally._
-- _The layout must be split into three sections:_
-  **Header:** Should display the logo and the dynamic navigation provided in the backend’s Home page. On the frontend it should be possible to click on any of the links in the navigation and see the content of those pages
-  **Main:** Should display the content of the current page
-  **Footer:** Should display a simple copyright message
+- _The layout must be split into three sections:_\
+  **Header:** Should display the logo and the dynamic navigation provided in the backend’s Home page. On the frontend it should be possible to click on any of the links in the navigation and see the content of those pages\
+  **Main:** Should display the content of the current page\
+  **Footer:** Should display a simple copyright message\
 - _The home page should display a list of blog posts. Clicking any of these should open the blog post on another page_
 
 _You are welcome to create all the HTML and CSS yourself, use a framework such as Bootstrap or Bulma or find a prebuilt blog theme somewhere on the internet._
