@@ -6,6 +6,7 @@
   align-items: center;
   overflow: hidden;
   padding: 40px;
+  width: 100vw;
   height: 700px;
   box-sizing: border-box;
   color: $white;
@@ -29,28 +30,47 @@
   flex: 1;
 }
 .heading {
-  font-size: $font-size-xxl;
+  line-height: 80px;
   z-index: 1;
-  line-height: 100px;
+  opacity: 0;
 }
 .globe {
   position: absolute;
-  height: 1000px;
-  width: 650px;
-  right: $gutter-desktop;
-  top: -50;
+  height: 700px;
+  width: 100vw;
+  right: -100px;
+  opacity: 0;
 }
+@media screen and (min-width: $breakpoint-ipad) {
+  .heading {
+    line-height: 100px;
+  }
+  .globe {
+    height: 1000px;
+    width: 650px;
+    right: 40px;
+    top: -50;
+  }
+}
+
 @media screen and (min-width: $breakpoint-laptop) {
   .container {
     padding: $gutter-desktop 180px;
+  }
+  .globe {
+    right: 80px;
   }
   .heading {
     width: 50%;
   }
 }
+
 @media screen and (min-width: $breakpoint-desktop) {
   .container {
     padding: $gutter-desktop 180px;
+  }
+  .globe {
+    right: 200px;
   }
   .heading {
     font-size: 72px;
