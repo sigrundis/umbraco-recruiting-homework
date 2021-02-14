@@ -22,8 +22,6 @@ const BlogPosts = ({ blogContent }) => {
   }, [blogPosts]);
 
   useEffect(() => {
-    console.log('isInViewport', isInViewport);
-    console.log('isBrowser,', isBrowser);
     if (isInViewport && isBrowser) {
       const timeline = gsap.timeline();
       timeline.to(blogPosts, { stagger: 0.4, duration: 0.6, opacity: 1, y: 0 });

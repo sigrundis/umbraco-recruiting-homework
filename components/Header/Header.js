@@ -17,12 +17,13 @@ const Header = ({ title, blogPost }) => {
 
     if (!blogPost) {
       gsap.set(svgRef?.current, { x: 1000 });
-      svgRef?.current?.addEventListener(LOAD, () => setSvgLoaded(true));
+      svgRef?.current?.addEventListener(LOAD, onLoadSvg);
 
-      return () =>
-        svgRef?.current?.removeEventListener(LOAD, () => setSvgLoaded(false));
+      return () => svgRef?.current?.removeEventListener(LOAD, onLoadSvg);
     }
   }, []);
+
+  const onLoadSvg = () => setSvgLoaded(true);
 
   /**
    * Trigger animation
