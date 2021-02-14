@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import ExpandWithAnimation from '../ExpandWithAnimation';
 import styles from './MobileNav.module.scss';
-const { whiteHamburger, wrapper, open, top, middle, bottom } = styles;
+const { whiteHamburger, wrapper, content, open, top, middle, bottom } = styles;
 
 const MobileNav = ({ isOpen, onClick, children, white }) => {
   const onToggle = () => {
@@ -25,9 +24,8 @@ const MobileNav = ({ isOpen, onClick, children, white }) => {
         <span className={middle}></span>
         <span className={bottom}></span>
       </div>
-      <ExpandWithAnimation isCollapsed={!isOpen}>
-        <div>{children}</div>
-      </ExpandWithAnimation>
+
+      {isOpen && <>{children}</>}
     </>
   );
 };

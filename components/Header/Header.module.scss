@@ -7,7 +7,7 @@
   overflow: hidden;
   padding: 40px;
   width: 100vw;
-  height: 700px;
+  height: 800px;
   box-sizing: border-box;
   color: $white;
   background: linear-gradient(to bottom right, $blue-darker, $blue-lighter);
@@ -61,7 +61,7 @@
     right: 80px;
   }
   .heading {
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -69,11 +69,13 @@
   .container {
     padding: $gutter-desktop 180px;
   }
-  .globe {
-    right: 200px;
-  }
   .heading {
     font-size: 72px;
-    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .globe {
+    right: 200px;
   }
 }

@@ -1,14 +1,12 @@
-import Link from 'next/link';
 import Head from '../components/Head';
 import Nav from '../components/Nav';
 import BlogPosts from '../components/BlogPosts';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Section from '../components/Section';
-import styles from '../styles/Home.module.scss';
 import { getDefaultContent, getBlog } from '../lib/api';
 
-export default function Home({ error, defaultContent, blogContent }) {
+export default function Home({ defaultContent, blogContent }) {
   const {
     metaTitle,
     metaDescription,
@@ -16,10 +14,6 @@ export default function Home({ error, defaultContent, blogContent }) {
     navigation,
     logo,
   } = defaultContent;
-
-  if (error) {
-    return <div>Sorry, something went wrong</div>;
-  }
 
   return (
     <>
@@ -45,6 +39,13 @@ export default function Home({ error, defaultContent, blogContent }) {
 export async function getStaticProps() {
   const data = await getDefaultContent();
   const blog = await getBlog();
+
+  if (data.error) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { ...data, ...blog },
   };

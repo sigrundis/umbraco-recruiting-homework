@@ -40,7 +40,7 @@ const BlogPost = ({ blogPost }) => {
           {updatedAtString} | {`By ${author}`}
         </div>
         <div className={textWrapper}>{preview}</div>
-        <Link href={url}>Tell me more!</Link>
+        <Link href={url}> Find Out More </Link>
       </div>
     </div>
   );

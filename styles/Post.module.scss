@@ -6,6 +6,7 @@
   height: 200px;
   margin: 0 auto;
   border-radius: $base-border-radius;
+  box-shadow: $base-box-shadow;
 }
 .image {
   position: absolute;
@@ -29,11 +30,12 @@
   background-color: $white;
   border-radius: $base-border-radius;
   box-shadow: $base-box-shadow;
+  box-sizing: border-box;
+  font-size: $font-size-m;
 }
 .labelValuePair {
   display: flex;
   align-items: center;
-  padding: 8px 0;
 }
 .label {
   font-weight: $font-weight-medium;
@@ -62,14 +64,46 @@
     height: 520px;
   }
   .info {
-    right: calc(100% + 25px);
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+  .labelValuePair {
+    margin-right: 10px;
+    padding: 0;
+    &:after {
+      content: ',';
+      font-weight: $font-weight-light;
+    }
+    &:last-child:after {
+      content: '';
+    }
   }
 }
 @media screen and (min-width: $breakpoint-desktop) {
   .info {
+    display: block;
     position: absolute;
-    width: 250px;
-    right: calc(100% + px);
+    width: 240px;
+    right: calc(100% + 25px);
     top: 0;
+    font-size: $font-size-s;
+    background-color: $white;
+    border-radius: $base-border-radius;
+    box-shadow: $base-box-shadow;
+  }
+  .labelValuePair {
+    &:after {
+      content: '';
+    }
+  }
+}
+@media screen and (min-width: 1450px) {
+  .info {
+    font-size: $font-size-m;
+    width: 250px;
+    right: calc(100% + 25px);
   }
 }

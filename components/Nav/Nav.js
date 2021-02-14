@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import gsap from 'gsap';
 import classNames from 'classnames';
 import { isBrowser } from '../../lib/helpers';
 import WhiteLogo from '../../assets/svg/umbraco_logo_white.svg';
@@ -30,6 +31,25 @@ const Nav = ({ nav, logo, selected }) => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const timeline = gsap.timeline();
+
+    if (isMobileNavOpen && isBrowser) {
+      const liElements = document.querySelectorAll('ul#mobile-nav-list li');
+      gsap.set(liElements, {
+        opacity: 0,
+        y: 100,
+      });
+      timeline.to(liElements, {
+        y: 0,
+        opacity: 1,
+        delay: 0.2,
+        stagger: 0.4,
+        duration: 0.6,
+      });
+    }
+  }, [isMobileNavOpen]);
 
   /**
    * When start scrolling down the page we update the hasScrolled state.
