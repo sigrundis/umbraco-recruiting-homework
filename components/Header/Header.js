@@ -19,6 +19,11 @@ const Header = ({ title, blogPost }) => {
       gsap.set(svgRef?.current, { x: 1000 });
       svgRef?.current?.addEventListener(LOAD, onLoadSvg);
 
+      //In case the load event listener doesn't trigger.
+      setTimeout(() => {
+        onLoadSvg();
+      }, 2500);
+
       return () => svgRef?.current?.removeEventListener(LOAD, onLoadSvg);
     }
   }, []);
