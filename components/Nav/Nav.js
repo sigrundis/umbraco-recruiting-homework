@@ -100,6 +100,7 @@ const Nav = ({ nav, logo, selected }) => {
           [hideLogoWrapper]: isMobileNavOpen,
         })}
         href="/"
+        aria-label="Go to front page"
       >
         {hasScrolled ? (
           <Image src={src} height={16} width={90} />

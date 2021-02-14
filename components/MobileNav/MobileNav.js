@@ -14,6 +14,7 @@ const MobileNav = ({ isOpen, onClick, children, white }) => {
     <>
       <div
         role="button"
+        aria-label="Open Mobile Navigation"
         onClick={onToggle}
         className={classNames(wrapper, {
           [open]: isOpen,
