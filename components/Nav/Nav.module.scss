@@ -67,6 +67,11 @@
     background-color: $white;
     & .li {
       color: $blue;
+      &:hover {
+        &::after {
+          background-color: $blue;
+        }
+      }
     }
     .selectedLi {
       &::after {

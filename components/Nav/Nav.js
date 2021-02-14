@@ -31,12 +31,41 @@ const Nav = ({ nav, logo, selected }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /**
+   * When start scrolling down the page we update the hasScrolled state.
+   * Used for changing the styling of the navigation bar.
+   */
   const handleScroll = () => {
     if (isBrowser) {
       const currentScrollPos = window.pageYOffset;
 
       setHasScrolled(currentScrollPos > 60);
     }
+  };
+
+  const renderNavList = (isMobile = true) => {
+    return nav.map((item, idx) => {
+      const { link, title } = item;
+      const url = Array.isArray(link) ? link[0]?.url : '#';
+      const extraLiProps = {
+        onMouseEnter: () => setNoneSelected(true),
+        onMouseLeave: () => setNoneSelected(false),
+      };
+
+      return (
+        <Link key={`${isMobile ? 'mobile' : 'desktop'}-item-${idx}`} href={url}>
+          <li
+            role="button"
+            className={classNames(li, {
+              [selectedLi]: !noneSelected && title === selected,
+            })}
+            {...extraLiProps}
+          >
+            {title}
+          </li>
+        </Link>
+      );
+    });
   };
 
   return (
@@ -64,45 +93,12 @@ const Nav = ({ nav, logo, selected }) => {
         onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
       >
         <ul id="mobile-nav-list" className={mobileUl}>
-          {nav.map((item, idx) => {
-            const { link, title } = item;
-            const url = Array.isArray(link) ? link[0]?.url : '#';
-            return (
-              <Link key={`mobile-item-${idx}`} href={url}>
-                <li
-                  role="button"
-                  className={classNames(li, {
-                    [selectedLi]: !noneSelected && title === selected,
-                  })}
-                >
-                  {title}
-                </li>
-              </Link>
-            );
-          })}
+          {renderNavList()}
         </ul>
       </MobileNav>
 
       <ul id="desktop-nav-list" className={ul}>
-        {nav.map((item, idx) => {
-          const { link, title } = item;
-          const url = Array.isArray(link) ? link[0]?.url : '#';
-
-          return (
-            <Link key={`desktop-item-${idx}`} href={url}>
-              <li
-                role="button"
-                className={classNames(li, {
-                  [selectedLi]: !noneSelected && title === selected,
-                })}
-                onMouseEnter={() => setNoneSelected(true)}
-                onMouseLeave={() => setNoneSelected(false)}
-              >
-                {title}
-              </li>
-            </Link>
-          );
-        })}
+        {renderNavList(false)}
       </ul>
     </nav>
   );

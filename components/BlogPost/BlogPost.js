@@ -25,22 +25,22 @@ const BlogPost = ({ blogPost }) => {
   } = blogPost;
 
   const updatedAtString = generateDateString(new Date(updatedAt));
-
-  const maxLength = 100;
+  const maxLength = 105;
+  // Preview of the first paragraph in the blog post.
   const preview = rte.substring(0, maxLength).replace('<p>', '') + '...';
 
   return (
     <div className={container}>
       <div className={imageWrapper}>
-        <Image className={image} src={src} layout="fill" />
+        <Image className={image} src={src} layout="fill" alt="Blogpost Image" />
       </div>
       <div className={info}>
+        <h3 className={heading}>{name}</h3>
         <div className={date}>
           {updatedAtString} | {`By ${author}`}
         </div>
-        <h3 className={heading}>{name}</h3>
         <div className={textWrapper}>{preview}</div>
-        <Link href={url}>Read more</Link>
+        <Link href={url}>Tell me more!</Link>
       </div>
     </div>
   );

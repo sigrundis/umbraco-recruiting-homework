@@ -2,6 +2,8 @@
 
 .container {
   position: relative;
+  display: flex;
+  flex-flow: column;
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 40px;
@@ -12,27 +14,27 @@
 .info {
   width: 100%;
   box-sizing: border-box;
-  padding: $gutter-mobile;
-  text-align: center;
+  padding: 20px;
   overflow: hidden;
+  text-align: center;
 }
 .heading {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 72px;
   font-weight: $font-weight-medium;
   margin: 8px 0;
 }
 .date {
   font-weight: $font-weight-light;
   color: $night-light;
+  margin: 10px 0;
 }
 .imageWrapper {
   position: relative;
   width: 100%;
   height: 200px;
-  border-radius: $base-border-radius $base-border-radius 0 0;
+  border-radius: $base-border-radius 0 0 $base-border-radius;
   margin-bottom: auto;
 }
 .image {
@@ -45,24 +47,72 @@
   left: 0;
   object-fit: cover;
   object-position: center;
-  border-radius: $base-border-radius $base-border-radius 0 0;
+  border-radius: $base-border-radius 0 0 $base-border-radius;
 }
 .textWrapper {
   line-height: 24px;
   font-weight: $font-weight-light;
   margin-bottom: 10px;
+  text-align: justify;
+  text-align-last: center;
 }
 
 @media screen and (min-width: $breakpoint-ipad) {
   .container {
+    flex-flow: row;
+  }
+  .heading {
+    justify-content: left;
+    align-items: left;
+  }
+  .imageWrapper {
+    width: 40%;
+    height: 100%;
+  }
+  .info {
+    width: 60%;
+    padding: $gutter-desktop;
+    text-align: left;
+  }
+  .date {
+    margin: 0 0 10px 0;
+  }
+  .textWrapper {
+    text-align-last: left;
+  }
+}
+
+@media screen and (min-width: $breakpoint-laptop) {
+  .container {
+    flex-flow: column;
     width: 45%;
     &:nth-child(even) {
       margin-left: auto;
     }
   }
+  .heading {
+    justify-content: center;
+    align-items: center;
+    min-height: 72px;
+  }
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+  }
+  .image {
+    border-radius: $base-border-radius $base-border-radius 0 0;
+  }
+  .info {
+    width: 100%;
+    text-align: center;
+    padding: 0 $gutter-desktop $gutter-desktop $gutter-desktop;
+    margin-bottom: auto;
+  }
 }
 
-@media screen and (min-width: $breakpoint-laptop) {
+@media screen and (min-width: $breakpoint-desktop) {
   .container {
     width: 28%;
     margin-bottom: 0;
@@ -70,13 +120,7 @@
       margin-left: 0;
     }
   }
-  .imageWrapper {
-    position: relative;
-    height: 200px;
-    width: 100%;
-  }
   .info {
-    padding: $gutter-desktop;
-    margin-bottom: auto;
+    padding: 10px $gutter-desktop $gutter-desktop $gutter-desktop;
   }
 }

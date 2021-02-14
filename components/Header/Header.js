@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { isBrowser } from '../../lib/helpers';
 import Globe from '../../assets/svg/globe.svg';
 import styles from './Header.module.scss';
+const LOAD = 'load';
 
 const { container, blogContainer, inner, heading, globe } = styles;
 
@@ -12,45 +13,51 @@ const Header = ({ title, blogPost }) => {
   const svgRef = useRef();
 
   useEffect(() => {
+    gsap.set('#heading', { y: 500, rotationX: -60 });
+
     if (!blogPost) {
-      svgRef?.current?.addEventListener('load', () => setSvgLoaded(true));
+      gsap.set(svgRef?.current, { x: 1000 });
+      svgRef?.current?.addEventListener(LOAD, () => setSvgLoaded(true));
 
       return () =>
-        svgRef?.current?.removeEventListener('scroll', () => () =>
-          setSvgLoaded(false)
-        );
+        svgRef?.current?.removeEventListener(LOAD, () => setSvgLoaded(false));
     }
   }, []);
 
+  /**
+   * Trigger animation
+   */
   useEffect(() => {
+    // We don't have background image in the header of blogPosts.
     if ((svgLoaded || blogPost) && isBrowser) {
-      const START = 'beginAnimate';
       const timeline = gsap.timeline();
-      timeline
-        .to(
+      const START = 'beginAnimate';
+      const defaultOptions = {
+        opacity: 1,
+        duration: 0.8,
+        ease: 'Power3.inOut',
+      };
+
+      timeline.to(
+        '#heading',
+        {
+          ...defaultOptions,
+          y: 0,
+          rotationX: 0,
+        },
+        START
+      );
+
+      if (svgRef?.current) {
+        timeline.to(
           svgRef?.current,
           {
-            opacity: 1,
+            ...defaultOptions,
             x: 0,
-            duration: 0.8,
-            ease: 'Power3.inOut',
-          },
-          START
-        )
-        .to(
-          '#heading',
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            rotationX: 0,
-            ease: 'Power3.inOut',
           },
           START
         );
-    } else {
-      gsap.set(svgRef?.current, { x: 1000 });
-      gsap.set('#heading', { y: 500, rotationX: -60 });
+      }
     }
   }, [svgLoaded]);
 

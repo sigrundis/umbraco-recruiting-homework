@@ -12,12 +12,12 @@
   flex-wrap: wrap;
 }
 
-@media screen and (min-width: $breakpoint-ipad) {
+@media screen and (min-width: $breakpoint-laptop) {
   .blogContainer {
     justify-content: flex-start;
   }
 }
-@media screen and (min-width: $breakpoint-laptop) {
+@media screen and (min-width: $breakpoint-desktop) {
   .blogContainer {
     justify-content: space-evenly;
   }

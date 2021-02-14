@@ -16,11 +16,13 @@
   line-height: 36px;
   text-align: justify;
 }
+
 @media screen and (min-width: $breakpoint-laptop) {
   .container {
     padding: 80px 200px;
   }
 }
+
 @media screen and (min-width: $breakpoint-desktop) {
   .container {
     padding: 80px 300px;
